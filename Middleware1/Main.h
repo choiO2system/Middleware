@@ -1,12 +1,15 @@
 #pragma once
-#include <stdio.h>
-#include "BaseObject.h"
+
+#include "Application.h"
 
 class Main
 {
+private:
+	Application* pApplication;
 public:
 	Main() {
 		printf("%s\n", __func__);
+		this->pApplication = nullptr;
 	}
 	virtual ~Main() {
 		printf("%s\n", __func__);
@@ -14,17 +17,20 @@ public:
 
 	void initialize() {
 		printf("%s\n", __func__);
+		this->pApplication = new("pApplication") Application();
+		BaseObject::g_pMemory->printSlots();
 	}
 	void run() {
 		printf("%s\n", __func__);
 
-		BaseObject* pBaseObject = new BaseObject(1, "BaseObject", "pBaseObject");
-		printf("%d %s %d %s\n", 
-			pBaseObject->getIdClass(), pBaseObject->getNameClass(), pBaseObject->getIdObject(), pBaseObject->getNameObject());
-		
+		printf("%d %s\n",
+			this->pApplication->getIdClass(),
+			this->pApplication->getNameClass());		
 	}
 	void finalize() {
 		printf("%s\n", __func__);
+		delete this->pApplication;
+		BaseObject::g_pMemory->printSlots();
 	}
 };
 

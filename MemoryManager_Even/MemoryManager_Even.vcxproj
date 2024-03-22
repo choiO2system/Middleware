@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{70d96f16-3a97-4992-a701-dddaa73f48d2}</ProjectGuid>
-    <RootNamespace>Middleware1</RootNamespace>
+    <ProjectGuid>{ca7152d1-67a9-4456-8b6d-da4b334e9a5e}</ProjectGuid>
+    <RootNamespace>MemoryManagerEven</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,18 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="BaseObject.h" />
-    <ClInclude Include="IMemory.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Main.h" />
-    <ClInclude Include="Memory.h" />
-    <ClInclude Include="Type.h" />
+    <ClInclude Include="MemoryManager.h" />
+    <ClInclude Include="Object.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="MemoryManager.cpp" />
+    <ClCompile Include="Object.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

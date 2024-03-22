@@ -1,8 +1,7 @@
 #pragma once
 
-#include <string.h>
-
-#define LENGTH_NAME 20
+#include "Type.h"
+#include "IMemory.h"
 
 class BaseObject
 {
@@ -14,16 +13,21 @@ private:
 	int idClass;
 	char nameClass[LENGTH_NAME];
 
-	int idObject;
-	char nameObject[LENGTH_NAME];
 public:
-	// constructors and destructors
-	BaseObject(int idClass, const char* nameClass, const char* nameObject) {
-		this->idClass = idClass;
-		strcpy_s(this->nameClass, nameClass);
-		this->idObject = g_idObject++;
-		strcpy_s(this->nameObject, nameObject);
+	static IMemory* g_pMemory;
+
+	void* operator new(size_t size, const char *pName){
+		return g_pMemory->allocate(size, pName);
 	}
+	void operator delete(void* pObject) {
+		g_pMemory->dellocate(pObject);
+	}
+	void operator delete(void* pObject, const char* pName) {
+		g_pMemory->dellocate(pObject);
+	}
+
+	// constructors and destructors
+	BaseObject(int idClass, const char* nameClass);
 	virtual ~BaseObject() {}
 
 	virtual void initialize() {}
@@ -32,8 +36,5 @@ public:
 	// getters and setters
 	int getIdClass() { return this->idClass; }
 	char* getNameClass() { return this->nameClass; }
-
-	int getIdObject() { return this->idObject; }
-	char* getNameObject() { return this->nameObject; }
 };
 
