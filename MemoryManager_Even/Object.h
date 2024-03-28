@@ -7,7 +7,10 @@ private:
 	int id;
 public:
 	static MemoryManager* pMemoryManager;
-
+	Object() {
+	}
+	virtual ~Object() {
+	}
 	void* operator new (size_t size) {
 		void *pAllocated = pMemoryManager->alloc(size);
 		printf("Object::new(%zu) %p\n", size, pAllocated);

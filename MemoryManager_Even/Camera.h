@@ -11,6 +11,8 @@ private:
 	int id4;
 public:
 	Camera() {
+		Object::Object();
+
 		this->id = 0;
 		printf("Camera::Camera()\n");
 

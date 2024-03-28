@@ -6,7 +6,7 @@ class Main
 public:
 	Main() {
 		char *pBuffer = new char[1000];
-		Object::pMemoryManager = new(pBuffer) MemoryManager(sizeof(char)* 100);
+		Object::pMemoryManager = new(pBuffer) MemoryManager(sizeof(char)* 1024, 256);
 		// MemoryManager::new(sizeof(MemoryManager));
 
 	}
@@ -14,9 +14,6 @@ public:
 	}
 
 	void run() {
-		Object* pObject = new Object();
-
-
 		Camera* pCamera;
 		pCamera= new Camera();
 		pCamera->run();
